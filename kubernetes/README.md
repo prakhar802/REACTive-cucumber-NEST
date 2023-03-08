@@ -23,7 +23,7 @@ For Kubernetes resources of nestjs-chatapp
 5. Get URL to access chatapp-backend app<br/>
 `minikube service chatapp-backend --url`
 
-6. Use this URL as base URL to test <a href="https://github.com/Substancia/nestjs-chatapp-backend">these APIs</a>
+6. Use this URL as base URL to test <a href="https://github.com/Substancia/REACTive-cucumber-NEST/tree/main/backend">these APIs</a>
 
 ### Cleanup
 1. Delete the kubernetes deployment<br/>
