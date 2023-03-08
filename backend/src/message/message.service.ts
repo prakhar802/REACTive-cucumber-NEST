@@ -25,9 +25,9 @@ export class MessageService {
   }
 
   fetchMessages(req: Request, res: Response): void {
-    const { chatId } = req.body;
+    const { chatId, latestTimestamp } = req.body;
     if (chatId) {
-      const messageObj = fetchMessagesMock(chatId);
+      const messageObj = fetchMessagesMock(chatId, latestTimestamp);
       if (messageObj) {
         console.log('Message fetched successfully!');
         res.json({ messages: messageObj.messages });
