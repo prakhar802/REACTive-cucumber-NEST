@@ -24,7 +24,9 @@
 
 ## Description
 
-Sample ChatApp backend server written in NestJS for educational purposes
+Sample ChatApp backend server written in NestJS for educational purposes.
+
+PoC: https://github.com/Substancia/nestjs-chatapp-backend
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
