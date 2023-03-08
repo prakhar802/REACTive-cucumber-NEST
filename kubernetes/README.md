@@ -33,4 +33,5 @@ For Kubernetes resources of nestjs-chatapp
 `minikube stop`
 
 ## Footer
+PoC: https://github.com/Substancia/kubernetes-chatapp<br/>
 This is an educational project. Thanks for stopping by, have a great day!
