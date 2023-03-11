@@ -96,8 +96,24 @@ const updateMessagesMock = (props: MessageProps): { status: string } => {
   };
 };
 
-const fetchMessagesMock = (chatId: string): MessageObject => {
-  return messagesMock.find((obj) => obj.chatId === chatId);
+const fetchMessagesMock = (
+  chatId: string,
+  latestTimestamp: number | undefined,
+): MessageObject => {
+  const messageObj = messagesMock.find((obj) => obj.chatId === chatId);
+  if (!latestTimestamp) {
+    return messageObj;
+  }
+  let messages = [];
+  let i = messageObj.messages.length - 1;
+  while (i >= 0 && messageObj.messages[i].timestamp > latestTimestamp) {
+    messages = [...messages, messageObj.messages[i]];
+    i -= 1;
+  }
+  return {
+    chatId,
+    messages,
+  };
 };
 
 const connectToChat = (
