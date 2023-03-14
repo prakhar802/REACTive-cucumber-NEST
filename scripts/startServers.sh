@@ -4,6 +4,6 @@ startServersDocker() {
 
 if [ "$1" == "start:docker" ]
 then
-	startDevAnt $2
+	startServersDocker
 	exit
 fi
