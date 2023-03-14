@@ -2,6 +2,7 @@
 
 . ./scripts/startServers.sh
 
+. ./scripts/stopServers.sh
+
 echo "Invalid command: $1"
-echo "$script for usage."
 exit 1
