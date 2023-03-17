@@ -8,10 +8,8 @@ stopServersDocker(){
 	docker-compose -f docker-compose.yml rm -svf
 }
 
-echo HERE
 case "$1" in
     "stop:local")
-        echo NOW HERE
         stopServersLocal
         exit
         ;;
