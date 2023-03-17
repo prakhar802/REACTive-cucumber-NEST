@@ -53,10 +53,10 @@ services:
     volumes:
       - data-vol:/data/db
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
-      - MYSQL_DATABASE=${DB_DATABASE}
-      - MYSQL_HOST=${DB_HOST}
-      - MYSQL_USERNAME=${DB_USERNAME}
+      - MONGO_ROOT_PASSWORD=${DB_PASSWORD}
+      - MONGO_DATABASE=${DB_DATABASE}
+      - MONGO_HOST=${DB_HOST}
+      - MONGO_USERNAME=${DB_USERNAME}
     networks:
       - cucumber
     restart: always
