@@ -11,7 +11,7 @@ export default function Logout() {
   const dispatch = useDispatch();
   
   return (
-    <button className="logoutButton" onClick={()=>{dispatch(logOut());localStorage.removeItem("accessToken");navigate("/")}}>
+    <button className="logoutButton" onClick={()=>{dispatch(logOut());localStorage.removeItem("accessToken0");navigate("/")}}>
       <BiPowerOff className="logoutIcon" />
     </button>
   );
