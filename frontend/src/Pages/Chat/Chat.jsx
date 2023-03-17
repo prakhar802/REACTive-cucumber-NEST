@@ -12,35 +12,35 @@ function Chat(){
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        localStorage.setItem('accessToken0', accessTokenState.accessToken);
-      },[accessTokenState]);
+    // useEffect(() => {
+    //     localStorage.setItem('accessToken0', accessTokenState.accessToken);
+    //   },[accessTokenState]);
 
     const [token,setToken] = useState(localStorage.getItem("accessToken0"))
 
     
    
-    useEffect(() => {
-        setToken(localStorage.getItem("accessToken0"))
-        console.log(token);
-        const getMessages = async () => {
-         try{  await axios.post("http://localhost:4200/message/fetch",{
-              chatId: 'main_group_chat',
-          },{
-              headers: {
-                  'x-access-token':  token
-              }
-            });
-         } catch(err){
-          if(err.response)
-            {
-            // localStorage.removeItem("accessToken0");
-            // // dispatch(logOut());
-            // navigate("/login")
-        }
-         }}
-         getMessages(); 
-      }, [navigate,dispatch,token]);
+    // useEffect(() => {
+    //     setToken(localStorage.getItem("accessToken0"))
+    //     console.log(token);
+    //     const getMessages = async () => {
+    //      try{  await axios.post("http://localhost:4200/message/fetch",{
+    //           chatId: 'main_group_chat',
+    //       },{
+    //           headers: {
+    //               'x-access-token':  token
+    //           }
+    //         });
+    //      } catch(err){
+    //       if(err.response)
+    //         {
+    //         // localStorage.removeItem("accessToken0");
+    //         // // dispatch(logOut());
+    //         // navigate("/login")
+    //     }
+    //      }}
+    //      getMessages(); 
+    //   }, [navigate,dispatch,token]);
 
     return<div className="chat">
         <div className='container'>

@@ -12,11 +12,19 @@ function LogIn() {
     let [errorMessage1,setErrorMessage1] = useState("") ;
     const [values, setValues] = useState({ username: "", password: "" });
     const { username, password } = values;
+    useEffect(() => {
+      console.log(accessTokenState.accessToken);
+      if(accessTokenState.accessToken)
+      {localStorage.setItem('accessToken0', accessTokenState.accessToken);}
+    },[accessTokenState]);
     
-    // useEffect(() => {
-    //   const token = localStorage.getItem('accessToken0');
-    //   if(token){navigate("/chat")}
-    // }, [navigate]);
+    useEffect(() => {
+      const token = localStorage.getItem('accessToken0');
+      console.log(localStorage.getItem('accessToken0'));
+      if(localStorage.getItem('accessToken0')){navigate("/chat");}
+    },[navigate]);
+  
+    
 
     console.log(localStorage.getItem("accessToken0"));
     
@@ -29,7 +37,7 @@ function LogIn() {
                     setErrorMessage1(accessTokenState.description)
                  }
                   else  {
-                  setTimeout(()=>navigate("/chat"),2000);
+                  setTimeout(()=>navigate("/chat"),5000);
                   }
             };
           }
