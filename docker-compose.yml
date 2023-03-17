@@ -13,6 +13,8 @@ services:
     volumes:
       - ./backend:/usr/src/app
       - /usr/src/app/node_modules
+    networks:
+      - cucumber
     command: "yarn start"
     environment:
       NODE_ENV: development
@@ -30,6 +32,8 @@ services:
     volumes:
       - ./frontend:/usr/src/app
       - /usr/src/app/node_modules
+    networks:
+      - cucumber
     command: "yarn start"
     environment:
       NODE_ENV: development
@@ -38,3 +42,21 @@ services:
       - 4200:4200
     labels:
       com.datadoghq.ad.logs: '[{"source": "cucumber-frontend", "service": "cucumber-frontend"}]'
+
+  cucumber-database:
+    hostname: cucumber-database
+    container_name: cucumber-database
+    build:
+      context: ./database
+    ports:
+      - 27017:27017
+    volumes:
+      - data-vol:/data/db
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_HOST=${DB_HOST}
+      - MYSQL_USERNAME=${DB_USERNAME}
+    networks:
+      - cucumber
+    restart: always
