@@ -10,19 +10,23 @@ export default function ChatDisplay () {
     const [msg,setMsg] = useState({messages:[]})
     const messagesEndRef = useRef(null)
     const accessTokenState = useSelector((state) => state.accessToken.tokens)
+    // useEffect(() => {
+    //   console.log(accessTokenState.accessToken);
+    //   localStorage.setItem('accessToken0', accessTokenState.accessToken);
+    // },[accessTokenState]);
     
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
 
-   const [token,setToken] = useState(localStorage.getItem("accessToken0"))
+
+   const token = (localStorage.getItem("accessToken0"))
 
     const scrollToBottom = () => {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
     }
 
     useEffect(() => {
-        setToken(localStorage.getItem("accessToken0"))
         console.log(token);
         const interval = setInterval(async() => {
           try{ let response = await axios.post("http://localhost:4200/message/fetch",{
