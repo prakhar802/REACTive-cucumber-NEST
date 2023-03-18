@@ -1,5 +1,5 @@
 # Base docker-compose file
-version: "1"
+version: "3"
 
 networks:
   cucumber: {}
@@ -21,8 +21,6 @@ services:
       SERVICE_NAME: cucumber-backend
     ports:
       - 4200:4200
-    labels:
-      com.datadoghq.ad.logs: '[{"source": "cucumber-backend", "service": "cucumber-backend"}]'
 
   cucumber-frontend:
     hostname: cucumber-frontend
@@ -39,24 +37,22 @@ services:
       NODE_ENV: development
       SERVICE_NAME: cucumber-frontend
     ports:
-      - 4200:4200
-    labels:
-      com.datadoghq.ad.logs: '[{"source": "cucumber-frontend", "service": "cucumber-frontend"}]'
+      - 3000:3000
 
-  cucumber-database:
-    hostname: cucumber-database
-    container_name: cucumber-database
-    build:
-      context: ./database
-    ports:
-      - 27017:27017
-    volumes:
-      - data-vol:/data/db
-    environment:
-      - MONGO_ROOT_PASSWORD=${DB_PASSWORD}
-      - MONGO_DATABASE=${DB_DATABASE}
-      - MONGO_HOST=${DB_HOST}
-      - MONGO_USERNAME=${DB_USERNAME}
-    networks:
-      - cucumber
-    restart: always
+  # cucumber-database:
+  #   hostname: cucumber-database
+  #   container_name: cucumber-database
+  #   build:
+  #     context: ./database
+  #   ports:
+  #     - 27017:27017
+  #   volumes:
+  #     - data-vol:/data/db
+  #   environment:
+  #     - MONGO_ROOT_PASSWORD=${DB_PASSWORD}
+  #     - MONGO_DATABASE=${DB_DATABASE}
+  #     - MONGO_HOST=${DB_HOST}
+  #     - MONGO_USERNAME=${DB_USERNAME}
+  #   networks:
+  #     - cucumber
+  #   restart: always

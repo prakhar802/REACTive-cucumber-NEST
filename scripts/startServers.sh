@@ -11,7 +11,9 @@ startServersLocal() {
 }
 
 startServersDocker() {
-    docker-compose -f docker-compose.yml
+	docker-compose \
+    -f docker-compose.yml \
+    up -d  --renew-anon-volumes  --no-build
 }
 
 case "$1" in
